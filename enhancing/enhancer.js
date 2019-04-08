@@ -14,7 +14,11 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  if (item !== null && typeof item === 'object') {
+    return { ...item, durability: 100 };
+  } else {
+    return undefined;
+  }
 }
 
 function get(item) {
