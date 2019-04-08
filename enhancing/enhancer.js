@@ -38,5 +38,11 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  if (item === null || typeof item !== 'object')  return undefined;
+  if (!Object.keys(item).includes('enhancement') | !Object.keys(item).includes('name')) return undefined;
+  if (item.enhancement === 0) {
+    return item
+  } else if (item.enhancement > 0) {
+    return { ...item, name: `[+${item.enhancement}] ${item.name}` }
+  }
 }
